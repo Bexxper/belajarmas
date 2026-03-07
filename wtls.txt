@@ -1,20 +1,3 @@
-local whitelist = {
+whitelist = {
     [12918603] = true
 }
-
-local player = GetLocal()
-
-if not player then
-    log("`4Player data not found")
-    return
-end
-
-if not whitelist[player.userid] then
-    log("`4Access denied! UID not authorized.")
-    return
-end
-
-log("`2UID Verified! Welcome "..player.name)
-
--- ===== YOUR SCRIPT FEATURES BELOW =====
-load(httprequest("https://raw.githubusercontent.com/Bexxper/belajarmas/refs/heads/main/Gp1", "get"))()
