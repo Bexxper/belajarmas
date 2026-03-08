@@ -1,3 +1,6 @@
+--- Proxy made by @Dom
+--- Recomend Using Gpai
+--- Ketauan jual script ini pukul ditempat baru dipolisikan
 function OnTextOverlay(text)
   var = {}
   var[0] = "OnTextOverlay"
@@ -15,12 +18,46 @@ end
 OnConsoleMessage("`0[ `1Discord : Bexxper `0] Proxy by @Dom")
 OnTextOverlay("`2Proxy by @Dom/Bexxper")
 local function Dialog()
-  local var = {}
-  var[0] = "OnDialogRequest"
-  var[1] = "set_default_color|`o\nadd_label_with_icon|big|`1Proxy V1 `bBexxper``|left|3802|\nadd_textbox|Proxy Created by `bDom `0|\nend_dialog|||Continue|"
-  var.netid = -1
-  SendVarlist(var)
-end
+    function string.removeColors(varlist)
+      return varlist:gsub("`.", "")
+    end
+    n1 = GetLocal().name:removeColors()
+    n2 = n1:gsub(" of Legend", "")
+    n3 = n2:gsub("Dr.", "")
+    varlist = {}
+    varlist[0] = "OnDialogRequest"
+    varlist[1] = [[
+set_default_color|`o
+add_label_with_icon|big|`0Proxy `9Rock `1PS``|left|7340|
+add_spacer|small|
+add_label_with_icon|small|Proxy Version : `0v1``|left|10794|
+add_spacer|small|
+add_label_with_icon|small|`9Announcement : `3]] .. Announcement .. [[
+``|left|2480|
+add_label_with_icon|small|`bTiktok `0: futirrr``|left|10794|
+add_spacer|small|
+add_textbox|`4User ID : `3]] .. math.floor(GetLocal().userid) .. " `0x `4Net ID : `3" .. math.floor(GetLocal().netid) .. [[
+|left|
+add_spacer|small|
+add_label_with_icon|medium|`0Log Update 1.1``|left|3524|
+add_label_with_icon|small|`2[ + ] Added Feature |left|
+add_label_with_icon|small|`0Added Collect Text, Overlay, Console|left|
+add_label_with_icon|small|`0Added Auto Block Super Duper Broadcast|left|
+add_spacer|small|
+add_label_with_icon|small|`2[ + ] Added Command |left|
+add_label_with_icon|small|`0Added /autosb|left|
+add_label_with_icon|small|`0Added /cs ( Change SFA TO BET )|left|
+add_label_with_icon|small|`0Added /dbet ( CHANGE BET TO SFA )|left|
+add_spacer|small|
+add_url_button||`1Discord Creator : Bexxper``|kr|https://discord.gg/rfDPTeXsum|
+add_url_button||`bTiktok creator``|kr|https://tiktok.com/futirrr|
+add_url_button||`1@Dom[Bexxper]``|Verse|@Dom[Bexxper|
+add_spacer|small|
+add_quick_exit|
+]]
+    varlist.netid = -1
+    SendVarlist(varlist)
+  end
 Dialog()
 key = "Discord : Bexxper."
 if key == "Discord : Bexxper." then
@@ -66,6 +103,8 @@ add_label_with_icon|big|`3Main Commands``|left|5956|
 add_textbox|`1Command : `0/modfly `0( `1enable / disable modfly `0)|left|3522|
 add_textbox|`1Command : `0/dsf `0( `1Drop `4SFA `0)|left|3522|
 add_textbox|`1Command : `0/db `0( `1Drop `2BET `0)|left|3522|
+add_textbox|`1Command : `0/cs `0( `1Change `4SFA `0to `2BET `0)|left|3522|
+add_textbox|`1Command : `0/cbet `0( `1Drop `2BET `0to `4SFA `0)|left|3522|
 add_textbox|`1Command : `0/fc `0( `1Force close proxy `0)|left|3522|
 add_spacer|small|
 add_label_with_icon|big|`3Growscan Commands``|left|6016|
@@ -114,8 +153,8 @@ action|input
 --- deposit /depo
 
 
----custom drop dl
-AddCallback("dropdl command", "OnPacket", function(type, packet)
+---custom drop sfa
+AddCallback("dropsfa command", "OnPacket", function(type, packet)
     -- Check if it's a chat message starting with "/dd"
     if type == 2 and packet:find("action|input\n|text|/dd") then
         local message = packet:gsub("action|input\n|text|/dd", "")
@@ -131,8 +170,8 @@ AddCallback("dropdl command", "OnPacket", function(type, packet)
         end
     end
 end)
----custom drop bgl
-AddCallback("dropbgl command", "OnPacket", function(type, packet)
+---custom drop bet
+AddCallback("dropbet command", "OnPacket", function(type, packet)
     -- Check if it's a chat message starting with "/db"
     if type == 2 and packet:find("action|input\n|text|/db") then
         local message = packet:gsub("action|input\n|text|/db", "")
@@ -386,7 +425,7 @@ action|input
         var = {}
         var[0] = "OnTalkBubble"
         var[1] = GetLocal().netid
-        var[2] = "`9Collected `2+" .. math.floor(GetLocal().gems - Local_Gems) .. " `9Gems"
+        var[2] = "`0[ `3Discord : Bexxper `0]`9Collected `2+" .. math.floor(GetLocal().gems - Local_Gems) .. " `9Gems"
         var[3] = 0
         var[4] = 0
         var.netid = -1
@@ -594,6 +633,82 @@ function Spin_checker(varlist)
 end
 
 AddCallback("Spin_checker", "OnVarlist", Spin_checker)
+
+  function exchange1(type, packet)
+    if [[
+action|input
+|text|/cs]] == packet then
+        SendPacket(2, "action|dialog_return\ndialog_name|exchange_go\nJ22TFqmzAfVayLzXqWW|Sfh7fK3DOhU18ROSB0|\nWQC2UucONuHWtGMcimEfQ5CXZwLOI1M|PCx0UdvqjdyFeXuHgrb|\npeQmqd03SLqW638h3H0l|5gdDk0R7piPaca7UiSgK|\nbuttonClicked|ex_115501001363610\n")
+        SendPacket(2, "action|input\n|text|`0[`b[ DOM ]`0] Changed `4SFA `0to `2BET")
+        OnTextOverlay("`0[`5[ DOM ]`0] Changed `4SFA `0to `2BET")
+      return true
+    end
+  end
+  AddCallback("csfa_command", "OnPacket", exchange1)
+
+    function exchange2(type, packet)
+    if [[
+action|input
+|text|/cbet]] == packet then
+        SendPacket(2, "action|dialog_return\ndialog_name|exchange_go\nvOuMczsnvksVDOaFbi2b|POOa3p4HzaNElHelnJ8hLJmW60w|\nKjPYeJFa85CtZzD45bFY3ATHPtTYe|cz8ycr20CrMSCVUCIVhnh0RlI1I|\noKjKmSfgtn2lksIagxEF|txQ59DV5xs0rso9blhn|\nCSyXPQmRGd4VDOudbforTHT1f|qjYiNE2xdlg9XZ5x9ns|\nbuttonClicked|ex_136361115501000\n")
+        SendPacket(2, "action|input\n|text|`0[`b[ DOM ]`0] Changed `2BET `0to `4SFA")
+        OnTextOverlay("`0[`5[ DOM ]`0] Changed `2BET `0to `4SFA")
+      return true
+    end
+  end
+  AddCallback("cbet_command", "OnPacket", exchange2)
+
+  AddCallback("dom_block_sdb","OnVarlist",function(var)
+    if var[0] == "OnSDBroadcast" then
+        OnConsoleMessage("`0[`5[ DOM ]`0] `1Super Duper Broadcast `4Blocked")
+        OnTextOverlay("`4`0[`5[ DOM ]`0] `1Super Duper Broadcast `4Blocked")
+        return true
+    end
+end)
+
+local autosb_running = false
+local autosb_text = ""
+local delay = 255000 -- 4 menit 15 detik
+
+function autosb(type, packet)
+  if packet:find("action|input\n|text|/autosb") then
+
+    -- toggle off
+    if autosb_running then
+      autosb_running = false
+      OnConsoleMessage("`0[ `3Discord : Bexxper `0] `4AutoSB Disabled")
+      OnTextOverlay("`0[ `3Discord : Bexxper `0] `4AutoSB Disabled")
+      return true
+    end
+
+    local text = packet:match("/autosb%s+(.+)")
+    if not text then
+      OnConsoleMessage("`0[ `3Discord : Bexxper `0] `4Usage: /autosb TEXT")
+      return true
+    end
+
+    autosb_text = text
+    autosb_running = true
+
+    OnConsoleMessage("`0[ `3Discord : Bexxper `0] `2AutoSB Enabled: "..autosb_text)
+    OnTextOverlay("`0[ `3Discord : Bexxper `0] `2AutoSB Enabled")
+
+    RunThread(function()
+      while autosb_running do
+        SendPacket(2, "action|input\n|text|/msb "..autosb_text)
+        Sleep(1000)
+        SendPacket(2, "action|input\n|text|/vsb "..autosb_text)
+        Sleep(delay)
+      end
+    end)
+
+    return true
+  end
+end
+
+AddCallback("autosb_command", "OnPacket", autosb)
+
+--overlay collector
   function check_drops(varlist)
     if "OnConsoleMessage" == varlist[0] and varlist[1]:find("Collected `w") then
       collectingxd = varlist[1]:removeColors()
@@ -605,7 +720,7 @@ AddCallback("Spin_checker", "OnVarlist", Spin_checker)
   end
   AddCallback("check_drops", "OnVarlist", check_drops)
   function check_login(varlist)
-    if "OnConsoleMessage" == varlist[0] and varlist[1]:find("Welcome back,") then
+    if "OnConsoleMessage" == varlist[0] and varlist[1]:find("`0[ `3Discord : Bexxper `0] Welcome back,") then
       OnConsoleMessage("`0[ `3Discord : Bexxper `0] `9Player Authentication `2Successful.")
       return true
     end
@@ -632,3 +747,4 @@ AddCallback("Spin_checker", "OnVarlist", Spin_checker)
   print("Thanks for using this proxy")
   print("Discord : Bexxper")
 end
+
