@@ -1,4 +1,3 @@
---- error 404
 function OnTextOverlay(text)
   var = {}
   var[0] = "OnTextOverlay"
