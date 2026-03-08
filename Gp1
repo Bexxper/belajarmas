@@ -663,48 +663,6 @@ action|input
     end
 end)
 
-local autosb_running = false
-local autosb_text = ""
-local delay = 255000 -- 4 menit 15 detik
-
-function autosb(type, packet)
-  if packet:find("action|input\n|text|/autosb") then
-
-    -- toggle off
-    if autosb_running then
-      autosb_running = false
-      OnConsoleMessage("`0[ `3Discord : Bexxper `0] `4AutoSB Disabled")
-      OnTextOverlay("`0[ `3Discord : Bexxper `0] `4AutoSB Disabled")
-      return true
-    end
-
-    local text = packet:match("/autosb%s+(.+)")
-    if not text then
-      OnConsoleMessage("`0[ `3Discord : Bexxper `0] `4Usage: /autosb TEXT")
-      return true
-    end
-
-    autosb_text = text
-    autosb_running = true
-
-    OnConsoleMessage("`0[ `3Discord : Bexxper `0] `2AutoSB Enabled: "..autosb_text)
-    OnTextOverlay("`0[ `3Discord : Bexxper `0] `2AutoSB Enabled")
-
-    RunThread(function()
-      while autosb_running do
-        SendPacket(2, "action|input\n|text|/msb "..autosb_text)
-        Sleep(1000)
-        SendPacket(2, "action|input\n|text|/vsb "..autosb_text)
-        Sleep(delay)
-      end
-    end)
-
-    return true
-  end
-end
-
-AddCallback("autosb_command", "OnPacket", autosb)
-
 --overlay collector
   function check_drops(varlist)
     if "OnConsoleMessage" == varlist[0] and varlist[1]:find("Collected `w") then
