@@ -1,3 +1,4 @@
+--404 error
 Announcement = "Proxy by @Dom[Bexxper]"
 function OnTextOverlay(text)
   var = {}
