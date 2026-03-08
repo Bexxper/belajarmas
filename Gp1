@@ -1,6 +1,3 @@
---- Proxy made by @Dom
---- Recomend Using Gpai
---- Ketauan jual script ini pukul ditempat baru dipolisikan
 function OnTextOverlay(text)
   var = {}
   var[0] = "OnTextOverlay"
