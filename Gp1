@@ -1,3 +1,18 @@
+--- error 404
+function OnTextOverlay(text)
+  var = {}
+  var[0] = "OnTextOverlay"
+  var[1] = text
+  var.netid = -1
+  SendVarlist(var)
+end
+function OnConsoleMessage(text)
+  var = {}
+  var[0] = "OnConsoleMessage"
+  var[1] = text
+  var.netid = -1
+  SendVarlist(var)
+end
 OnConsoleMessage("`0[ `1Discord : Bexxper `0] Proxy by @Dom")
 OnTextOverlay("`2Proxy by @Dom/Bexxper")
 local function Dialog()
